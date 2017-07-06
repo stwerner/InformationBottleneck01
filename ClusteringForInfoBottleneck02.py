@@ -4,6 +4,9 @@
 Compute tsne for information bottleneck
 (for python 3)
 
+needs: bhtsne-master
+
+does:
 - USER: specify folder path, perplexity and outputfile
 - identifies list of files in the specified folder
 (here: CrossingSegments)
@@ -32,7 +35,7 @@ import bhtsne
 
 # -- USER INPUT: data folder, perplexity of tsne, output file
 inputfolder='CrossingSegments'
-perplexity=50 #typical values 45, 50, 55
+perplexity=60 #typical values 45, 50, 55
 out_file='TsneResults/Perp'+str(perplexity)+'.h5'
 # -- END
 
