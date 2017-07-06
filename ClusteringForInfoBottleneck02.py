@@ -29,14 +29,15 @@ import os
 import numpy as np
 import h5py
 import sys
-sys.path.append('./bhtsne-master')
+path2mainfolder='/Users/admin/Documents/AmsterdamResearch/InformationBottleneck/'
+sys.path.append(path2mainfolder+'bhtsne-master')
 import bhtsne
 
 
 # -- USER INPUT: data folder, perplexity of tsne, output file
-inputfolder='CrossingSegments'
+inputfolder=path2mainfolder+'CrossingSegments'
 perplexity=60 #typical values 45, 50, 55
-out_file='TsneResults/Perp'+str(perplexity)+'.h5'
+out_file=path2mainfolder+'TsneResults/Perp'+str(perplexity)+'.h5'
 # -- END
 
 
@@ -44,6 +45,7 @@ out_file='TsneResults/Perp'+str(perplexity)+'.h5'
 h5filelist=os.listdir(inputfolder)
 print('Number of files: '+str(len(h5filelist)))
 
+#check whether output file already exists
 user_input='n'
 if os.path.isfile(out_file):
     print('Output file already exists.')
