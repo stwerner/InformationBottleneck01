@@ -59,13 +59,14 @@ if user_input=='y':
     for i in range(len(h5filelist)):
         f=h5py.File(inputfolder + '/' + h5filelist[i],'r') #r - read only
         loadedthetas=np.array(f['thetas'])
+        f.close()
         #matrix with models x 16 entries
         #reshape attaches [0,0,:],[0,1,:],...
         usethetas=np.reshape(loadedthetas[:,1:5,:],
                              (loadedthetas.shape[0],16,1))[:,:,0]
         entrynumber[i]=usethetas.shape[0]; #number of linear models in file
         if i==0:
-            allthetas=usethetas
+            allthetas=np.copy(usethetas)
         else: #stitches all together
             allthetas=np.vstack((allthetas, usethetas))
     print('Size of data: '+str(allthetas.shape))
